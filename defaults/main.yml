@@ -1,0 +1,45 @@
+---
+
+# s3 bucket name
+s3bucket: "ellucian-drafts"
+
+# installers folder name in s3
+ecrm_installers: "CRM"
+
+# destination folder
+installers_destination: "C:\\Installers"
+
+# Installation Defaults
+
+roles: '\"APP\"'
+
+sqlServerName: 
+
+reportingURL: 
+
+createDB: "false"
+
+orgName: "Crm"
+
+defaultWeb: "/LM/W3SVC/1"
+
+# dnetBIOS
+dnetBIOS: 
+
+adminUser: "{{dnetBIOS}}\\crmservice"
+
+adminPassword: "R3cruit3r"
+
+# domain user
+runAsUser: "{{dnetBIOS}}\\crmservice"
+
+# domain user pwd
+runAsPassword: "R3cruit3r"
+
+defaultPort: "80"
+
+defaultOU: '\"OU=Crm,DC=devops,DC=greatvalleyu,DC=com\"'
+
+preferredDC: "devops.greatvalleyu.com"
+
+onlyReportingServices: "false"
