@@ -31,7 +31,7 @@ adminUser: "{{dnetBIOS}}\\crmservice"
 adminPassword: "R3cruit3r"
 
 # domain user
-runAsUser: "{{dnetBIOS}}\\crmservice"
+runAsUser: "{{dnetBIOS}}\\crmadmin"
 
 # domain user pwd
 runAsPassword: "R3cruit3r"

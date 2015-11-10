@@ -10,7 +10,7 @@
   script: CreateCRMInstall.ps1 "{{roles}}" {{sqlServerName}} {{reportingURL}} {{createDB}} {{orgName}} {{defaultWeb}} {{defaultPort}} "{{defaultOU}}" {{preferredDC}} "{{adminUser}}" {{adminPassword}}
 
 - name: Create task
-  script: CreateTask.ps1
+  script: CreateTask.ps1 "{{runAsUser}}" {{runAsPassword}}
 
 - name: Reboot Windows
   raw: shutdown -r -f
