@@ -41,9 +41,9 @@
 
 - name: Verify CRM Installation
   script: VerifyCRM.ps1
-  when: onlyReportingServices == 0
+  when: onlyReportingServices == "false"
 
 - name: Verify CRM RS Installation
   script: VerifyCRM_RS.ps1
-  when: onlyReportingServices == 1
+  when: onlyReportingServices == "true"
 

@@ -42,4 +42,4 @@ defaultOU: '\"OU=Crm,DC=devops,DC=greatvalleyu,DC=com\"'
 
 preferredDC: "devops.greatvalleyu.com"
 
-onlyReportingServices: 0
+onlyReportingServices: "false"
