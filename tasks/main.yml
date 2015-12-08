@@ -12,6 +12,10 @@
 - name: Create task
   script: CreateTask.ps1 "{{runAsUser}}" {{runAsPassword}}
 
+- name: Update Ignore Checks
+  script: UpdateIgnoreChecks.ps1
+  when: createDB != "true"
+
 - name: Reboot Windows
   raw: shutdown -r -f
 
@@ -39,6 +43,49 @@
     timeout: 600
     state: started
 
+- name: Create update installation task
+  script: CreateTaskUpdate.ps1 "{{runAsUser}}" {{runAsPassword}}
+
+- name: Reboot Windows
+  raw: shutdown -r -f
+
+- name: wait for windows system reboot
+  local_action:
+    module: wait_for
+    host: "{{ ansible_ssh_host|default(inventory_hostname) }}"
+    port: "{{ ansible_ssh_port|default(5985) }}"
+    delay: 90
+    timeout: 600
+    state: started
+
+- name: Wait until updates Installation is Complete
+  script: TaskStatusUpdate.ps1
+
+- name: Remove Ignore Checks
+  script: RemoveIgnoreChecks.ps1
+  when: createDB != "true"
+
+- name: Update Trace, Timeout and other keys
+  script: TraceAndTimeoutKeys.ps1 "{{traceDirectory}}" "{{traceCategories}}"
+  when: onlyReportingServices == "false"
+
+- name: Update Trace, Timeout and other keys
+  script: TraceAndTimeoutKeys.ps1 "{{traceDirectoryRS}}" "{{traceCategories}}"
+  when: onlyReportingServices == "true"
+
+
+- name: Reboot Windows
+  raw: shutdown -r -f
+
+- name: wait for windows system reboot
+  local_action:
+    module: wait_for
+    host: "{{ ansible_ssh_host|default(inventory_hostname) }}"
+    port: "{{ ansible_ssh_port|default(5985) }}"
+    delay: 90
+    timeout: 600
+    state: started
+
 - name: Verify CRM Installation
   script: VerifyCRM.ps1
   when: onlyReportingServices == "false"
@@ -46,4 +93,6 @@
 - name: Verify CRM RS Installation
   script: VerifyCRM_RS.ps1
   when: onlyReportingServices == "true"
+
+
 

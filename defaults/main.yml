@@ -5,13 +5,21 @@ s3bucket: "ellucian-drafts"
 
 # installers folder name in s3
 ecrm_installers: "CRM"
+crm_update_installers: "CRM/CRMUpdate0.2"
 
 # destination folder
 installers_destination: "C:\\Installers"
+update_installers_destination: "C:\\Installers\\CRMUpdate0.2"
+
+# certificate
+CertificateWildCard: "'core-staging.devops.greatvalleyu.com'"
+
+# https bindings
+CertPath: "CERT:\\LocalMachine\\My"
 
 # Installation Defaults
 
-roles: '\"APP\"'
+roles: "'RS'"
 
 sqlServerName: 
 
@@ -19,7 +27,7 @@ reportingURL:
 
 createDB: "false"
 
-orgName: "Crm"
+orgName: "TST01"
 
 defaultWeb: "/LM/W3SVC/1"
 
@@ -38,8 +46,15 @@ runAsPassword: "R3cruit3r"
 
 defaultPort: "80"
 
-defaultOU: '\"OU=Crm,DC=devops,DC=greatvalleyu,DC=com\"'
+defaultOU: "'OU=Crm,DC=core-staging,DC=devops,DC=greatvalleyu,DC=com'"
 
-preferredDC: "devops.greatvalleyu.com"
+preferredDC: "core-staging.devops.greatvalleyu.com"
 
-onlyReportingServices: "false"
+onlyReportingServices: "true"
+
+traceDirectory: "'C:\\Program Files\\Microsoft Dynamics CRM\\Trace'"
+traceDirectoryRS: "'C:\\Program Files\\Microsoft Dynamics CRM Reporting Extensions\\Trace'"
+traceCategories: "'*:Verbose'"
+
+
+

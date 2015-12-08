@@ -42,8 +42,8 @@ Function Exit-Json($obj)
     Exit
 }
 
-If (Test-Path "HKLM:\Software\Microsoft\MSCRM") {
-    Exit-Json "CRM installation is successful."
+If (C:\installers\Test-PathReg.ps1 -Path "HKLM:\Software\Microsoft\MSCRM" -Property "CRM_Server_Version") {
+    Exit-Json "CRM Installation is Successful."
 }
 Else{
     Fail-Json 'result' "CRM Installation Failed. Please check the log for more details."

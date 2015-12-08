@@ -43,7 +43,7 @@ Function Exit-Json($obj)
 }
 
 If (C:\installers\Test-PathReg.ps1 -Path "HKLM:\Software\Microsoft\MSCRM" -Property "CRM_SrsDataConnector_Version") {
-    Exit-Json "CRM Reporting Services installation is successful."
+    Exit-Json "CRM Reporting Services Installation is Successful."
 }
 Else{
     Fail-Json 'result' "CRM Reporting Services Installation Failed. Please check the log for more details."
