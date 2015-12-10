@@ -47,4 +47,25 @@ if(Test-Path HKLM:\SOFTWARE\Microsoft\MSCRM){
     else{
         New-ItemProperty -Path HKLM:\Software\Microsoft\MSCRM -Name TraceFileSizeLimit -PropertyType DWORD -Value 10 -Force
     }
+    # OLEDBTimeout
+    If (C:\installers\Test-PathReg.ps1 -Path "HKLM:\Software\Microsoft\MSCRM" -Property "OLEDBTimeout"){
+        Set-ItemProperty -Path HKLM:\Software\Microsoft\MSCRM -Name OLEDBTimeout -Value 1500 -Force
+    }
+    else{
+        New-ItemProperty -Path HKLM:\Software\Microsoft\MSCRM -Name OLEDBTimeout -PropertyType DWORD -Value 1500 -Force
+    }
+    # ExtendedTimeout
+    If (C:\installers\Test-PathReg.ps1 -Path "HKLM:\Software\Microsoft\MSCRM" -Property "ExtendedTimeout"){
+        Set-ItemProperty -Path HKLM:\Software\Microsoft\MSCRM -Name ExtendedTimeout -Value 1000000 -Force
+    }
+    else{
+        New-ItemProperty -Path HKLM:\Software\Microsoft\MSCRM -Name ExtendedTimeout -PropertyType DWORD -Value 1000000 -Force
+    }
+    # DisableLoopbackCheck
+    If (C:\installers\Test-PathReg.ps1 -Path HKLM:\SYSTEM\CurrentControlSet\Control\Lsa -Property "DisableLoopbackCheck"){
+        Set-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\Lsa -Name DisableLoopbackCheck -Value 1 -Force
+    }
+    else{
+        New-ItemProperty -Path HKLM:\SYSTEM\CurrentControlSet\Control\Lsa -Name DisableLoopbackCheck -PropertyType DWORD -Value 1 -Force
+    }
 }
